@@ -3,9 +3,13 @@
 
 ## Anti-Debugging Techniques
 
-## Anti-Simulation Techniques
+<a href="https://anti-debug.checkpoint.com/">more info</a>
 
 ## Persistent Connection
+
+## Evasions Techniques
+
+<a href="https://evasions.checkpoint.com/">more info</a>
 
 ## Technology
 
