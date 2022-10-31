@@ -1,31 +1,31 @@
-# 0neSPY - Under Construction
+# :bomb: 0neSPY - Under Construction 
 
 
-## Anti-Debugging Techniques
+## :bug: Anti-Debugging Techniques 
 
 <a href="https://anti-debug.checkpoint.com/">more info</a>
 
-## Persistent Connection
+## :link: Persistent Connection
 <ul>
   <li>TG C2 Backup</li>
   <li>Registry AutoStart</li>
 </ul>
 
-## Evasions Techniques
+## :mag: Evasions Techniques
 <ul>
   <li>Self-Destroy</li>
   <li>Process Injection</li>
 </ul>
 <a href="https://evasions.checkpoint.com/">more info</a>
 
-## Technology
+## :books: Technology
 <ul>
   <li>GoLang</li>
   <li>PHP - Apache</li>
   <li>MySQL - PhpMyAdmin
 </ul>
 
-## Features
+## :wrench: Features
 <ul>
   <li>Screen-Share</li>
   <li>Interactive-Shell</li>
