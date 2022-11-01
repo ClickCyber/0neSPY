@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	IP 	 = "{IP}"
+	IP   = "{IP}"
 	PORT = "{PORT}"
 	KEY  = "{KEY}"
 )
@@ -68,7 +68,7 @@ var addrs = []string {
 
 var process = []string {
 	"HTTP Toolkit.exe", "Fiddler.exe", "Wireshark.exe","joeboxcontrol.exe",
-    "httpdebuggerui.exe", "vboxservice.exe", "df5serv.exe","processhacker.exe",
+    	"httpdebuggerui.exe", "vboxservice.exe", "df5serv.exe","processhacker.exe",
 	"vboxtray.exe", "vmtoolsd.exe", "vmwaretray.exe", "ida64.exe", "ollydbg.exe", 
 	"vmwareuser.exe", "vgauthservice.exe", "vmacthlp.exe", "x96dbg.exe", "vmsrvc.exe", 
 	"vmusrvc.exe", "prl_cc.exe", "prl_tools.exe", "xenservice.exe", "qemu-ga.exe",
@@ -76,12 +76,12 @@ var process = []string {
 }
 
 func trim(s string) string {
-	return strings.TrimSpace(strings.Trim(s, "\n"))
+    return strings.TrimSpace(strings.Trim(s, "\n"))
 }
 func in_array(val string, objects []string) (bool){
 	for _,value := range objects {
 	    if val == value{
-	    	return true
+		return true
 	    }
 	}
 	return false
