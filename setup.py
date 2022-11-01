@@ -11,6 +11,8 @@ def install():
 	pass
 
 def build(ip, port):
+	if not os.path.exists('./tmp/'):
+		os.mkdir('./tmp/')
 	with open('./client/main.go') as handle:
 		source = handle.read()
 	source = source.replace('{IP}', ip)
