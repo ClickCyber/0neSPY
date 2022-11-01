@@ -1,14 +1,10 @@
-<?php
-session_start();
 
-include 'functions.php';
+
+
+<?php
 
 if (!isset($_SESSION['login'])){
-  die(header("location: login.php"));
+  header
 }
-
-
-// menu admin
-
 
 ?>

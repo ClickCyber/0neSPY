@@ -1,2 +1,10 @@
-github.com/fernet/fernet-go v0.0.0-20211208181803-9f70042a33ee h1:v6Eju/FhxsACGNipFEPBZZAzGr1F/jlRQr1qiBw2nEE=
-github.com/fernet/fernet-go v0.0.0-20211208181803-9f70042a33ee/go.mod h1:2H9hjfbpSMHwY503FclkV/lZTBh2YlOmLLSda12uL8c=
+github.com/denisbrodbeck/machineid v1.0.1 h1:geKr9qtkB876mXguW2X6TU4ZynleN6ezuMSRhl4D7AQ=
+github.com/denisbrodbeck/machineid v1.0.1/go.mod h1:dJUwb7PTidGDeYyUBmXZ2GphQBbjJCrnectwCyxcUSI=
+github.com/gentlemanautomaton/windevice v0.0.0-20220406232426-f40195028800 h1:6oNqWSB8DWIK0ZPafJTzJI1uM83ICbeVqQSbcxBb8Cg=
+github.com/gentlemanautomaton/windevice v0.0.0-20220406232426-f40195028800/go.mod h1:eSVU0EzYPtwRL9u0EgLjQ0gdxXH/NEsIu/wD25aIMy8=
+github.com/gentlemanautomaton/winguid v0.0.0-20190307223039-3f364f74ee74 h1:KBOUk7aWPrrx9pu4UntVtVJXWwLE1Z5w/vqOFLrsvhQ=
+github.com/gentlemanautomaton/winguid v0.0.0-20190307223039-3f364f74ee74/go.mod h1:w5CgCbxt8D1rCLKpdgBQLXc+19nItCmTwA8r+pDvlro=
+golang.org/x/sys v0.0.0-20220406163625-3f8b81556e12 h1:QyVthZKMsyaQwBTJE04jdNN0Pp5Fn9Qga0mrgxyERQM=
+golang.org/x/sys v0.0.0-20220406163625-3f8b81556e12/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+golang.org/x/sys v0.1.0 h1:kunALQeHf1/185U1i0GOB/fy1IPRDDpuoOOqRReG57U=
+golang.org/x/sys v0.1.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
