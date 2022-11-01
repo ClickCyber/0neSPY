@@ -172,7 +172,7 @@ func debugger(){
 	if anti_debugger(){
 	    os.Exit(3)
 	}
-}
+    }
 }
 func init(){
     go debugger()
