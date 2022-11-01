@@ -23,8 +23,8 @@ var sys = map[string]string{
 }
 
 var sys_hwid = map[string]string{
-  "windows": "wmic csproduct get uuid",
-  "linux": "cat /sys/class/dmi/id/product_uuid | findstr /v \"UUID\"",
+  "windows": "wmic csproduct get uuid | findstr /v \"UUID\"",
+  "linux": "cat /sys/class/dmi/id/product_uuid",
   "darwin":"system_profiler SPHardwareDataType | awk '/UUID/ { print $3 }",
 }
 
