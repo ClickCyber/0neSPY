@@ -14,7 +14,13 @@
 ## :mag: Evasions Techniques
 <ul>
   <li>Self-Destroy</li>
-  <li>Process Injection</li>
+  <li>Memory Inject</li>
+  <li>Black List IP</li>
+  <li>Black List HWID</li>
+  <li>Black List Users</li>
+  <li>Black List HostName</li>
+
+ 
 </ul>
 <a href="https://evasions.checkpoint.com/">more info</a>
 
