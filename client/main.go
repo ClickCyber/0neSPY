@@ -23,8 +23,8 @@ var sys = map[string]string{
 }
 
 var sys_hwid = map[string]string{
-  "windows": "wmic csproduct get uuid | findstr /v \"UUID\"",
-  "linux": "cat /sys/class/dmi/id/product_uuid",
+  "windows": "wmic csproduct get uuid",
+  "linux": "cat /sys/class/dmi/id/product_uuid | findstr /v \"UUID\"",
   "darwin":"system_profiler SPHardwareDataType | awk '/UUID/ { print $3 }",
 }
 
@@ -59,7 +59,6 @@ var hwids = []string {
 func trim(s string) string {
 	return strings.TrimSpace(strings.Trim(s, "\n"))
 }
-
 func in_array(val string, objects []string) (bool){
 	for _,value := range objects {
 	    if val == value{
@@ -68,8 +67,6 @@ func in_array(val string, objects []string) (bool){
 	}
 	return false
 }
-
-
 func anti_evasions()(bool){
 	User, err := user.Current()
   	if err != nil {
@@ -88,7 +85,6 @@ func anti_evasions()(bool){
    	if in_array(trim(system(sys_hwid[runtime.GOOS])), hwids){
    		return true
    	}
-   	
    	return false
 }
 func system(todo string) (string) {
@@ -130,8 +126,12 @@ func write_file(path string, context string) (string) {
     return path
 }
 
+func init(){
+	if anti_evasions(){
+		os.Exit(3)
+	}
+}
 func main(){
 	
-	fmt.Println(system(sys_hwid[runtime.GOOS]))
-	//fmt.Println(system("whoami"));
+	fmt.Println(system("ls"));
 }
